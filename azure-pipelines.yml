@@ -10,12 +10,5 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-
-# Build project
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    echo Build project on windows
-    displayName: Build .net proj
-
-#- script: echo Hello, world!
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
