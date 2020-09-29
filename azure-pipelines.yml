@@ -7,13 +7,15 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# Build project
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    echo Build project on windows
+    displayName: Build .net proj
+
+#- script: echo Hello, world!
