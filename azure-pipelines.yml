@@ -29,12 +29,12 @@ steps:
     resourceGroupName: 'buba-demo-rg'
     location: 'UK South'
     templateLocation: 'Linked artifact'
-    csmFile: 'templates/demo.apim.master.template.json'
-    csmParametersFile: 'templates/demo.apim.master.parameters.json'
+    csmFile: './BupaAPIM-DEV/sources/petstore-api/Output/myAPI-initial.api.template.json'
+    csmParametersFile: './BupaAPIM-DEV/sources/petstore-api/Output/apimdemo4321-parameters.json'
     deploymentMode: 'Validation'
     deploymentName: 'Azure Deployment: Create Or Update Resource Group action'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'drop-dev'
     publishLocation: 'Container'
