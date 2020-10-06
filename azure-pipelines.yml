@@ -1,0 +1,40 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'dev'
+
+steps:
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: '$(Build.Repository.LocalPath)'
+    azureSubscription: 'AzureDemo'
+    Destination: 'AzureBlob'
+    storage: 'storageaccounts4321'
+    ContainerName: 'armartifacts'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzureDemo'
+    subscriptionId: 'd4129fe5-178d-42d6-b745-61e4c4309a37'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'buba-demo-rg'
+    location: 'UK South'
+    templateLocation: 'Linked artifact'
+    csmFile: 'templates/demo.apim.master.template.json'
+    csmParametersFile: 'templates/demo.apim.master.parameters.json'
+    deploymentMode: 'Validation'
+    deploymentName: 'Azure Deployment: Create Or Update Resource Group action'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

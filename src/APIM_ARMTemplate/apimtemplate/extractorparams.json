@@ -1,6 +1,7 @@
 {
-    "sourceApimName": "<source-apim-name>",
-    "destinationApimName": "<destination-apim-name>",
-    "resourceGroup": "<resource-group>",
-    "fileFolder": "<destination-file-folder>"
+    "sourceApimName": "apimdemo4321",
+    "destinationApimName": "apimdemo4321
+",
+    "resourceGroup": "buba-demo-rg",
+    "fileFolder": "~/templates"
 }
