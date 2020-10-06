@@ -10,8 +10,10 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  buildConfiguration: 'Release'
+  buildConfiguration: 'dev'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- task: AzureFileCopy@4
+  inputs:
+    Destination: 'AzureBlob'
+    ContainerName: 'armartifacts'
