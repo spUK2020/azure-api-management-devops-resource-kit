@@ -15,7 +15,7 @@ variables:
 steps:
 - task: AzureFileCopy@4
   inputs:
-    SourcePath: '$(Build.Repository.LocalPath/src/APIM_ARMTemplate/apimtemplate/BupaAPIM-DEV/sources/petstore-api/Output/)'
+    SourcePath: '$(Build.Repository.LocalPath)/src/APIM_ARMTemplate/apimtemplate/BupaAPIM-DEV/sources/petstore-api/Output/)'
     azureSubscription: 'AzureDemo'
     Destination: 'AzureBlob'
     storage: 'storageaccounts4321'
