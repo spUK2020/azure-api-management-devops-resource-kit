@@ -23,6 +23,12 @@ steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'AzureDemo'
+    KeyVaultName: 'kv-amjz4fhxa3sao-demo'
+    SecretsFilter: '*'
+    RunAsPreJob: false
     azureResourceManagerConnection: 'AzureDemo'
     subscriptionId: 'd4129fe5-178d-42d6-b745-61e4c4309a37'
     action: 'Create Or Update Resource Group'
